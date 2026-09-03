@@ -33,6 +33,89 @@ GenAI	Yes	No	No
 AI Agents	Yes	Yes (single agent)	No
 Agentic AI	Yes	Yes	Yes (multi-agent orchestration)
 
+
+
+
+Let me build this out with proper terminology and a visual to show how the pieces connect.
+
+How generative AI works — the full pipeline
+
+At its core, GenAI is a next-token prediction engine. It doesn't "understand" language the way humans do — it's a massive statistical model that's learned to predict what word (or piece of a word) comes next, one step at a time, based on everything it's seen before.
+
+Step 1: Tokenization
+
+Before anything else, your input text gets broken into tokens — small chunks of text (words, sub-words, or characters). "Understanding" might become ["under", "stand", "ing"]. Models don't read raw text; they read sequences of token IDs (numbers).
+
+Step 2: Embeddings
+
+Each token ID gets converted into an embedding — a vector (list of numbers, often 1000+ dimensions) that captures its meaning in mathematical space. Words with similar meanings end up with similar vectors. This is how "king" and "queen" end up "close" to each other numerically.
+
+Step 3: The Transformer (the engine room)
+
+This is the core architecture behind almost all modern GenAI (GPT, Claude, Gemini). It's built from stacked layers, and the key mechanism inside is self-attention.
+
+What you're seeing above: every token doesn't just look at the word right before it — it looks at every token in the sequence and asks "how relevant are you to me?" The thicker/brighter the line, the more that token influences the current one's meaning. This happens across many stacked layers, and each layer refines the representation further. This is called self-attention, and it's the mechanism that lets the model understand that in "the cat sat on the mat," "sat" is connected to "cat" (who's sitting) more than to "the."
+
+Within each layer there are also multiple attention heads running in parallel — each one learning to focus on a different kind of relationship (grammar, meaning, position, etc.). That's called multi-head attention.
+
+Step 4: Feedforward layers
+
+After attention mixes information between tokens, each token passes through a feedforward network — a small neural net that transforms the representation further. Attention + feedforward = one transformer "block," and models stack dozens of these.
+
+Step 5: Output — probability distribution
+
+At the very end, the model produces a probability distribution over its entire vocabulary — basically a ranked guess of "what's the most likely next token?" For example, after "The sky is," it might assign 70% to "blue," 10% to "clear," 5% to "grey," etc.
+
+Step 6: Sampling
+
+The model then picks the next token — not always the highest-probability one (that would make output robotic and repetitive). Parameters like temperature control how random vs. deterministic this choice is. The chosen token gets added to the sequence, and the whole process repeats — this is why generation is described as autoregressive: each new token depends on all the ones before it.
+
 The "theory" of the video is essentially: complexity and autonomy increase at each stage, and Agentic AI represents the current frontier — where AI stops being a tool you prompt and starts being a system that plans and executes on its own toward a goal.
 
-If you want, paste a few lines of the actual transcript (turn on captions and copy a chunk) and I can tailor this summary more precisely to what she actually says instead of the general framework.
+If you want, paste a few lines of the actual transcript (turn on captions and copy a chunk) and I can tailor this summary more precisely to what she actually says instead of the general framework. 
+Let me break both of these down super simply, with an everyday analogy.
+
+Transformer — explained simply
+
+Think of the transformer like a group of friends reading a sentence together, where each friend represents one word.
+
+Every friend (word) turns to every other friend in the sentence and asks: "How much do I need to pay attention to you to understand my own meaning here?"
+
+Example: "The cat sat on the mat because it was tired."
+
+The word "it" turns to every other word and checks relevance:
+
+"it" → "cat" → very relevant (this is probably what "it" refers to)
+"it" → "mat" → barely relevant
+"it" → "tired" → somewhat relevant
+
+This checking-in process is called attention — it's just the model figuring out which words matter most to understanding each other word.
+
+Now here's the "transformer" part: this attention step happens, then each word's understanding gets refined a little (a small processing step called a feedforward layer), and then the whole thing repeats — dozens of times, stacked on top of each other like floors in a building. Each floor (layer) makes the model's understanding of the sentence a little richer and more nuanced.
+
+By the time the sentence has passed through all the floors, the model has a very deep, contextual understanding of every word — not just what it means alone, but what it means in that specific sentence.
+
+In one sentence: A transformer is a stack of layers where every word repeatedly checks in with every other word to build up a rich understanding of the whole sentence.
+
+Probability distribution — explained simply
+
+Once the model understands the sentence, it has to guess: "What word comes next?"
+
+It doesn't just pick one word confidently — it gives a score to every possible word in its vocabulary (tens of thousands of words), like a ranked guess.
+
+Example — after "I love drinking my morning...":
+
+Word	Probability
+coffee	68%
+tea	20%
+juice	6%
+smoothie	4%
+shoe	0.001%
+Next word prediction after "I love drinking my morning..."
+Probability (%)
+
+This whole ranked list is the probability distribution — every possible next word gets a percentage chance, and they all add up to 100%.
+
+The model then picks one — usually leaning toward the higher-probability options, but not always the very top one (a setting called temperature controls how "safe" vs "creative" this pick is). That chosen word gets added to the sentence, and the entire process — attention, layers, probability distribution — runs again to pick the next word. And again. And again — one word at a time, until the response is complete.
+
+In one sentence: The probability distribution is just the model's ranked list of "here's how likely each possible next word is," and it picks from that list to keep writing.
