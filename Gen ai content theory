@@ -1,0 +1,38 @@
+Got it — that's the Apna College video "Generative AI vs Agentic AI vs AI Agents". I still can't pull the actual transcript/audio, but based on the topic (and the diagram visible in your screenshot: AI → GenAI → AI Agents → Agentic AI), I can walk you through the theory these videos typically build, since it's a standard, well-established framework in the AI space. Here's the summary/explanation:
+
+The Core Idea: A Progression, Not Separate Things
+
+The video frames these four terms as an evolutionary ladder — each concept builds on the one before it.
+
+1. AI (Artificial Intelligence)
+
+The broad umbrella term — any system that mimics human intelligence: reasoning, learning, decision-making, pattern recognition. This includes everything from a chess engine to spam filters to self-driving cars.
+
+2. GenAI (Generative AI)
+
+A subset of AI focused specifically on creating new content — text, images, code, audio — rather than just classifying or predicting. Powered by large models (like GPT, Gemini, DALL·E) trained on huge datasets. Key trait: it responds to a prompt and generates output, but it doesn't act in the world or pursue goals on its own — it waits for you to ask.
+
+3. AI Agents
+
+This is where things get more autonomous. An AI Agent takes a GenAI model and gives it:
+
+Tools (web search, code execution, APIs, databases)
+Memory (context of what's happened so far)
+The ability to take actions, not just generate text
+
+So instead of just answering "what's the weather," an agent can actually go fetch the weather via an API call. It's task-specific — built to do one job (e.g., a customer support agent, a coding agent) reasonably independently.
+
+4. Agentic AI
+
+The most advanced stage: multiple AI agents working together, coordinating, planning multi-step workflows, delegating sub-tasks to each other, and adapting dynamically to reach a larger goal — with minimal human intervention. Think of it as an "AI system of systems" — e.g., one agent plans a trip, another books flights, another handles payments, all orchestrated together.
+
+The Big Takeaway
+Term	Can it create?	Can it act autonomously?	Can it coordinate multiple agents?
+AI	Not necessarily	No	No
+GenAI	Yes	No	No
+AI Agents	Yes	Yes (single agent)	No
+Agentic AI	Yes	Yes	Yes (multi-agent orchestration)
+
+The "theory" of the video is essentially: complexity and autonomy increase at each stage, and Agentic AI represents the current frontier — where AI stops being a tool you prompt and starts being a system that plans and executes on its own toward a goal.
+
+If you want, paste a few lines of the actual transcript (turn on captions and copy a chunk) and I can tailor this summary more precisely to what she actually says instead of the general framework.
